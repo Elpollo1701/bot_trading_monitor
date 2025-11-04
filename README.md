@@ -21,6 +21,9 @@ cd bot_trading_monitor
 Levantar los contenedores con Docker Compose:
 docker-compose up -d --build
 
+Como detener los servicios:
+docker-compose down
+
 Verificar que los contenedores estén corriendo:
 docker ps
 
