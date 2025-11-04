@@ -1,0 +1,24 @@
+services:
+  bot_trading:
+    build: .
+    container_name: bot_trading_app
+    ports:
+      - "5000:5000"   # Web Flask
+      - "8000:8000"   # Métricas Prometheus
+    volumes:
+      - .:/app
+    command: python bot.py
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus_server
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana_dashboard
+    ports:
+      - "3000:3000"
